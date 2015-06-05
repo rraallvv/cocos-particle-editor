@@ -1,0 +1,4 @@
+"jsList" : [
+    "src/resource.js",
+]
+"modules" : ["cocos2d","particle"],

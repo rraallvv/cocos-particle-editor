@@ -1,0 +1,25 @@
+{
+  "name": "cocos-particle-editor",
+  "version": "0.0.1",
+  "description": "particle editor for cocos2d-js",
+  "author": "Firebox Technology",
+  "hosts": {
+      "editor-framework": "^0.1.0"
+  },
+  "main": "main.js",
+  "menus": {
+    "Developer/Cocos Particle Editor": {
+      "message": "cocos-particle-editor:open"
+    }
+  },
+  "panels": {
+    "panel": {
+      "frame": "panel/cocos-particle-editor.html",
+      "type": "dockable",
+      "title": "cocos-particle-editor",
+      "height": 300,
+      "messages": [
+      ]
+    }
+  }
+}

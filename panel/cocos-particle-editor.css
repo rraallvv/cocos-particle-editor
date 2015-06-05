@@ -1,0 +1,74 @@
+:host {
+    display: flex;
+    flex-flow: row;
+    flex: 1;
+    /*background: rgb(34,34,34);*/
+    font-weight: 200;
+}
+
+.preview {
+    display: flex;
+    min-width: 320px;
+    background: black;
+    border: 1px solid rgb(115, 115, 115);
+    margin: 5px;
+}
+
+.parameter {
+    display: flex;
+    flex: 1;
+    margin: 5px;
+    flex-flow: column;
+}
+
+.tabs {
+    height: 30px;
+    border: 1px solid #212121;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.pages {
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+    background: rgb(57, 57, 57);
+    border: 1px solid #737373;
+}
+
+iron-pages {
+    display: flex;
+    flex: 1;
+    flex-flow:column;
+}
+
+.items {
+    flex-flow: row;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.fire-input {
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    height: 20px;
+    width: 100%;
+    min-width: 50px;
+    padding: 3px 5px;
+    border: 1px solid #555;
+    color: white;
+    background: #232323;
+}
+
+.tabs::shadow .paper-tabs .paper-tab-0 #ink.paper-tab {
+    color: white;
+}
+
+.tabs::shadow .paper-tabs #selectionBar {
+    background-color: #FFFFFF;
+}
