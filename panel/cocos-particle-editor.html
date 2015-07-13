@@ -1,61 +1,88 @@
-<link rel="import" href="import.html">
+<link rel="import" href="packages://ui-kit/widget/index.html">
+<link rel="import" href="packages://fire-ui-kit/widget/index.html">
+<link rel="import" href="packages://ui-property/widget/index.html">
+
+<script>
+document.ccConfig = {
+"renderMode": 2
+};
+</script>
+
+<!-- cocos2d-html5 -->
+<script type="text/javascript" src="app://runtime/runtime-cocos2d-js/lib/cocos2d-html5.js"></script>
+
 <dom-module id="cocos-particle-editor">
     <link rel="import" type="css" href="cocos-particle-editor.css">
     <template>
         <div class="preview" id="preview">
-            <canvas id="gameCanvas" style="background: #4285f4;flex:1;" ></canvas>
+            <canvas id="gameCanvas" on-mousedown="_onCanvasMouseDown" style="background: #4285f4;flex:1;" ></canvas>
         </div>
         <div class="parameter">
-            <paper-tabs selected="{{menuTab}}" id="tabs" class="tabs" scrollable  on-click="_select">
-                <paper-tab>Emit</paper-tab>
-                <paper-tab>TAB 2</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-                <paper-tab>TAB 3</paper-tab>
-            </paper-tabs>
-            <iron-pages class="pages" selected="{{menuTab}}">
-                <div>
-                    <div class="items">
-                        <paper-button on-click="_preview" style="background: rgb(68,68,68);  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                            Preview
-                        </paper-button>
-                        <!-- <div>Color:</div>
-                        <paper-button on-click="_preview" style="background: rgb(68,68,68);  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                            Preview
-                        </paper-button>
-                        <input type="file" on-change="_loadFile"/> -->
-                        <paper-slider></paper-slider>
-                    </div>
-                    <!-- <paper-button on-click="_preview" style="background: rgb(68,68,68);  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                        Preview
-                    </paper-button>
-                    <input type="file" on-change="_loadFile"/> -->
-                </div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </iron-pages>
+            <editor-section text="file">
+
+                <editor-custom-prop name="Texture">
+                    <editor-button class="small" on-click="_onSetTextureClick">SetTexure</editor-button>
+                </editor-custom-prop>
+
+            </editor-section>
+            <editor-section text="parameter">
+                <editor-custom-prop name="Max Particles">
+                    <editor-unit-input value="{{parameters.maxParticles}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Duration">
+                    <editor-unit-input value="{{parameters.duration}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Emission Rate">
+                    <editor-unit-input value="{{parameters.emissionRate}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Life">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Life Variance">
+                    <editor-unit-input value="{{parameters.lifeVariance}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Color">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Color Variance">
+                    <editor-unit-input value="{{parameters.}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Color">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Color Variance">
+                    <editor-unit-input value="{{parameters.lifeVariance}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Angle">
+                    <editor-unit-input value="{{parameters.angle}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Angle Variance">
+                    <editor-unit-input value="{{parameters.angleVariance}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Size">
+                    <editor-unit-input value="{{parameters.startParticleSize}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Size Variance">
+                    <editor-unit-input value="{{parameters.startParticleSizeVariance}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Life">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Life">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Life">
+                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                </editor-custom-prop>
+
+            </editor-section>
         </div>
+
+        <!--dialog window-->
+        <input type="file" hidden id="loadbtn"/>
+        <!--dialog window-->
     </template>
 </dom-module>
-<!-- <script type="text/javascript" src="../frameworks/cocos2d-html5/CCBoot.js"></script> -->
-<script type="text/javascript" src="cocos2d-js-v3.6-lite/cocos2d-js-v3.6.js"></script>
 <script type="text/javascript" src="cocos-particle-editor.js"></script>
 <script>
 

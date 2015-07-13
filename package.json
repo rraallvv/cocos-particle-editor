@@ -4,7 +4,7 @@
   "description": "particle editor for cocos2d-js",
   "author": "Firebox Technology",
   "hosts": {
-      "editor-framework": "^0.1.0"
+      "editor-framework": "^0.3.10"
   },
   "main": "main.js",
   "menus": {
@@ -19,6 +19,7 @@
       "title": "cocos-particle-editor",
       "height": 300,
       "messages": [
+          "selection:activated"
       ]
     }
   }

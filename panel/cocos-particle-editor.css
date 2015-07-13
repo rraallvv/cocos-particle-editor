@@ -8,7 +8,7 @@
 
 .preview {
     display: flex;
-    min-width: 320px;
+    width: 40%;
     background: black;
     border: 1px solid rgb(115, 115, 115);
     margin: 5px;
@@ -17,8 +17,10 @@
 .parameter {
     display: flex;
     flex: 1;
-    margin: 5px;
+    padding: 5px;
     flex-flow: column;
+    @apply(--layout-vertical);
+    overflow-y: auto;
 }
 
 .tabs {
@@ -36,12 +38,6 @@
     margin-top: 10px;
     background: rgb(57, 57, 57);
     border: 1px solid #737373;
-}
-
-iron-pages {
-    display: flex;
-    flex: 1;
-    flex-flow:column;
 }
 
 .items {
