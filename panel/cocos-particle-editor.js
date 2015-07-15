@@ -9,10 +9,10 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
     },
 
     properties: {
-        emitter: {
-            type: Object,
-            value: null,
-        },
+        // emitter: {
+        //     type: Object,
+        //     value: null,
+        // },
         parameters: {
             type: Object,
             value: function () {
@@ -22,7 +22,6 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
     },
 
     created: function () {
-        this.emitter = null;
         this.scene = null;
     },
 
@@ -61,6 +60,15 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
                 callback(info.path);
             }
         }.bind(this));
+    },
+
+    convertColor: function (ccColor) {
+        return new Object({
+            r: ccColor.r/255,
+            g: ccColor.g/255,
+            b: ccColor.b/255,
+            a:1
+        });
     },
 
     repaint: function () {
@@ -121,6 +129,7 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
     loadPlist: function (path) {
         cc.loader.load(path, function () {
             this.parameters = cc.loader.getRes(path);
+            console.log(this.parameters);
             var node = new cc.ParticleSystem(path);
             cc.director._runningScene.removeAllChildren();
             this.emitter = node;
@@ -134,14 +143,14 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
         if (!this.emitter) {
             return;
         }
-        var x = event.layerX;
-        var y = event.target.getBoundingClientRect().height - event.layerY;
-        this.emitter.setPosition(x,y);
+
         var mouseMoveHandle = function (event) {
             var x = event.layerX;
             var y = event.target.getBoundingClientRect().height - event.layerY;
             this.emitter.setPosition(x,y);
         }.bind(this);
+        mouseMoveHandle.call(this,event);
+
         event.target.addEventListener ( 'mousemove', mouseMoveHandle );
 
         event.target.addEventListener('mouseup',function (event) {

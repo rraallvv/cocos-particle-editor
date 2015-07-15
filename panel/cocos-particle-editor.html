@@ -27,54 +27,99 @@ document.ccConfig = {
             </editor-section>
             <editor-section text="parameter">
                 <editor-custom-prop name="Max Particles">
-                    <editor-unit-input value="{{parameters.maxParticles}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.maxParticles}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Duration">
-                    <editor-unit-input value="{{parameters.duration}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.duration}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Emission Rate">
-                    <editor-unit-input value="{{parameters.emissionRate}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.emissionRate}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Life">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.life}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Life Variance">
-                    <editor-unit-input value="{{parameters.lifeVariance}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.lifeVar}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Color">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                    <fire-color value="{{convertColor(emitter.startColor)}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Color Variance">
-                    <editor-unit-input value="{{parameters.}}"></editor-unit-input>
+                    <fire-color value="{{convertColor(emitter.startColorVar)}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="End Color">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                    <fire-color value="{{convertColor(emitter.endColor)}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="End Color Variance">
-                    <editor-unit-input value="{{parameters.lifeVariance}}"></editor-unit-input>
+                    <fire-color value="{{convertColor(emitter.endColorVar)}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="Angle">
-                    <editor-unit-input value="{{parameters.angle}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.angle}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Angle Variance">
-                    <editor-unit-input value="{{parameters.angleVariance}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.angleVar}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Size">
-                    <editor-unit-input value="{{parameters.startParticleSize}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.startSize}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Size Variance">
-                    <editor-unit-input value="{{parameters.startParticleSizeVariance}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.startSizeVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Size">
+                    <editor-unit-input value="{{emitter.endSize}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Size Variance">
+                    <editor-unit-input value="{{emitter.endSizeVariance}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Spin">
+                    <editor-unit-input value="{{emitter.startSpin}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Start Spin Variance">
+                    <editor-unit-input value="{{emitter.startSpinVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Spin">
+                    <editor-unit-input value="{{emitter.endSpin}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="End Spin Variance">
+                    <editor-unit-input value="{{emitter.endSpinVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Source Position">
+                    <fire-vec2 value="{{emitter.sourcePos}}"></fire-vec2>
+                </editor-custom-prop>
+                <editor-custom-prop name="Source Position Variance">
+                    <fire-vec2 value="{{emitter.sourcePosVar}}"></fire-vec2>
                 </editor-custom-prop>
                 <editor-custom-prop name="Life">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
-                </editor-custom-prop>
-                <editor-custom-prop name="Life">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
-                </editor-custom-prop>
-                <editor-custom-prop name="Life">
-                    <editor-unit-input value="{{parameters.life}}"></editor-unit-input>
+                    <editor-unit-input value="{{emitter.life}}"></editor-unit-input>
                 </editor-custom-prop>
 
+            </editor-section>
+
+            <editor-section text="Gravity Mode">
+                <editor-custom-prop name="Gravity">
+                    <fire-vec2 value="{{emitter.gravity}}"></fire-vec2>
+                </editor-custom-prop>
+                <editor-custom-prop name="speed">
+                    <editor-unit-input value="{{emitter.speed}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="speed Variance">
+                    <editor-unit-input value="{{emitter.speedVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Tangential Accel">
+                    <editor-unit-input value="{{emitter.tangentialAccel}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Tangential Accel Variance">
+                    <editor-unit-input value="{{emitter.tangentialAccelVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Radial Accel">
+                    <editor-unit-input value="{{emitter.radialAccel}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Radial Accel Variance">
+                    <editor-unit-input value="{{emitter.radialAccelVar}}"></editor-unit-input>
+                </editor-custom-prop>
+                <editor-custom-prop name="Rotation Is Dir">
+                    <editor-checkbox checked="{{emitter.rotationIsDir}}"></editor-checkbox>
+                </editor-custom-prop>
             </editor-section>
         </div>
 
