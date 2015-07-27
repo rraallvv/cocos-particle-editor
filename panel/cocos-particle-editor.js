@@ -9,10 +9,18 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
     },
 
     properties: {
-        // emitter: {
-        //     type: Object,
-        //     value: null,
-        // },
+        screenColor: {
+            type: Object,
+            value: function () {
+                return {
+                    r: 0,
+                    g: 0,
+                    b: 0,
+                    a: 1
+                };
+            },
+        },
+
         parameters: {
             type: Object,
             value: function () {
@@ -62,12 +70,16 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
         }.bind(this));
     },
 
+    _sceneClass: function (screenColor) {
+        return 'background: rgba('+screenColor.r * 255|0+','+screenColor.g * 255|0+','+screenColor.b * 255|0+','+screenColor.a+');flex:1;';
+    },
+
     convertColor: function (ccColor) {
         return new Object({
             r: ccColor.r/255,
             g: ccColor.g/255,
             b: ccColor.b/255,
-            a:1
+            a: ccColor.a/255
         });
     },
 
@@ -126,13 +138,35 @@ Editor.registerPanel( 'cocos-particle-editor.panel', {
         }.bind(this));
     },
 
+    _startColorChanged: function (event) {
+        event.stopPropagation();
+        if (this.emitter) {
+            this.emitter.startColor = new cc.Color(this._startColor.r * 255|0, this._startColor.g * 255|0, this._startColor.b * 255|0,this._startColor.a * 255|0);
+            // this.emitter.startColorVar = new cc.Color(this._startColorVar.r * 255|0, this._startColorVar.g * 255|0, this._startColorVar.b * 255|0,this._startColorVar.a * 255|0);
+        }
+    },
+
+    _endColorChanged: function (event) {
+        event.stopPropagation();
+        if (this.emitter) {
+            this.emitter.endColor = new cc.Color(this._endColor.r * 255|0, this._endColor.g * 255|0, this._endColor.b * 255|0,this._endColor.a * 255|0);
+            // this.emitter.endColorVar = new cc.Color(this._endColorVar.r * 255|0, this._endColorVar.g * 255|0, this._endColorVar.b * 255|0,this._endColorVar.b * 255|0);
+        }
+    },
+
     loadPlist: function (path) {
         cc.loader.load(path, function () {
             this.parameters = cc.loader.getRes(path);
-            console.log(this.parameters);
             var node = new cc.ParticleSystem(path);
             cc.director._runningScene.removeAllChildren();
             this.emitter = node;
+
+            this._startColor  = this.convertColor(this.emitter.startColor);
+            this._startColorVar = this.convertColor(this.emitter.startColorVar);
+            this._endColor = this.convertColor(this.emitter.endColor);
+            this._endColorVar = this.convertColor(this.emitter.endColorVar);
+            console.log(this.emitter.endColorVar);
+
             cc.director._runningScene.addChild(this.emitter);
         }.bind(this));
     },

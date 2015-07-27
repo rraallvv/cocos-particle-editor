@@ -12,14 +12,19 @@
     background: black;
     border: 1px solid rgb(115, 115, 115);
     margin: 5px;
+    position: relative;
+}
+
+.screenColor {
+    position: absolute;
+    width: 100px;
+    right: 0px;
 }
 
 .parameter {
-    display: flex;
     flex: 1;
     padding: 5px;
     flex-flow: column;
-    @apply(--layout-vertical);
     overflow-y: auto;
 }
 

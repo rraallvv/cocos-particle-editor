@@ -15,7 +15,8 @@ document.ccConfig = {
     <link rel="import" type="css" href="cocos-particle-editor.css">
     <template>
         <div class="preview" id="preview">
-            <canvas id="gameCanvas" on-mousedown="_onCanvasMouseDown" style="background: #4285f4;flex:1;" ></canvas>
+            <canvas id="gameCanvas" on-mousedown="_onCanvasMouseDown" style$="{{_sceneClass(screenColor)}}" ></canvas>
+            <fire-color class="screenColor" value="{{screenColor}}"></fire-color>
         </div>
         <div class="parameter">
             <editor-section text="file">
@@ -42,16 +43,16 @@ document.ccConfig = {
                     <editor-unit-input value="{{emitter.lifeVar}}"></editor-unit-input>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Color">
-                    <fire-color value="{{convertColor(emitter.startColor)}}"></fire-color>
+                    <fire-color value="{{_startColor}}" on-value-changed="_startColorChanged"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="Start Color Variance">
-                    <fire-color value="{{convertColor(emitter.startColorVar)}}"></fire-color>
+                    <fire-color value="{{_startColorVar}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="End Color">
-                    <fire-color value="{{convertColor(emitter.endColor)}}"></fire-color>
+                    <fire-color value="{{_endColor}}" on-value-changed="_endColorChanged"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="End Color Variance">
-                    <fire-color value="{{convertColor(emitter.endColorVar)}}"></fire-color>
+                    <fire-color value="{{_endColorVar}}"></fire-color>
                 </editor-custom-prop>
                 <editor-custom-prop name="Angle">
                     <editor-unit-input value="{{emitter.angle}}"></editor-unit-input>
